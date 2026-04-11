@@ -1,3 +1,7 @@
+CREATE DATABASE finance_logistics_model;
+USE finance_logistics_model;
+
+
 CREATE TABLE dim_customer (
   customer_id INT PRIMARY KEY,
   customer_name VARCHAR(100),

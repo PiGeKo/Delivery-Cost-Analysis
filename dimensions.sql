@@ -20,7 +20,7 @@ CREATE TABLE dim_location (
   location_id INT PRIMARY KEY,
   city VARCHAR(100),
   country VARCHAR(100),
-  eircode VARCHAR(10)
+  postal_code VARCHAR(10)
 );
 CREATE TABLE dim_date (
   date_id INT PRIMARY KEY,

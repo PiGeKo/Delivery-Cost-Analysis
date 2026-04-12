@@ -28,10 +28,12 @@ CREATE TABLE dim_date (
   full_date DATE,
   dayN INT,
   monthN INT,
-  yearN INT
+  yearN INT,
+  quarterN INT
 );
 CREATE TABLE dim_product (
   product_id INT PRIMARY KEY,
   item_name VARCHAR(100),
-  item_category VARCHAR(50)
+  item_category VARCHAR(50),
+  weight DECIMAL(3,2)
 );

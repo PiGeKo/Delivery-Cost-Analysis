@@ -1,6 +1,7 @@
 CREATE TABLE fact_parcel (
     parcel_fact_id INT PRIMARY KEY,
     total_cost DECIMAL(10,2),
+    total_revenue DECIMAL(10,2),
     delivery_time INT, -- in days
     parcel_weight DECIMAL(10,2),
     parcel_value DECIMAL(10,2),
@@ -9,6 +10,8 @@ CREATE TABLE fact_parcel (
     parcel_id INT NOT NULL,
     customer_id INT NOT NULL,
     location_id INT NOT NULL,
+    origin_id INT NOT NULL,
+    destination_id INT NOT NULL,
     date_id INT NOT NULL,
     product_id INT NOT NULL,
     
@@ -16,6 +19,8 @@ CREATE TABLE fact_parcel (
     FOREIGN KEY (parcel_id) REFERENCES dim_parcel(parcel_id),
     FOREIGN KEY (customer_id) REFERENCES dim_customer(customer_id),
     FOREIGN KEY (location_id) REFERENCES dim_location(location_id),
+    FOREIGN KEY (origin_id) REFERENCES dim_location(location_id),
+    FOREIGN KEY (destination_id) REFERENCES dim_location(location_id),
     FOREIGN KEY (date_id) REFERENCES dim_date(date_id),
     FOREIGN KEY (product_id) REFERENCES dim_product(product_id)
     

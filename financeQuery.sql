@@ -1,1 +1,0 @@
--- Kripa Shrestha 24141356

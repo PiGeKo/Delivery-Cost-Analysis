@@ -134,12 +134,6 @@ INSERT INTO fact_parcel VALUES
 -- ----------------------
 -- Piotr
 --
-SELECT cat.item_category, loc.city AS destination, AVG(fact.delivery_time) AS avg_days
-FROM fact_parcel fact
-JOIN dim_product product ON parcel.product_id = product.product_id
-JOIN dim_location loc ON fact.destination_id = loc.location_id
-GROUP BY prod.item_category, loc.city
-ORDER BY avg_days DESC;
 
 SELECT prod.item_category, loc.city AS destination, AVG(fact.delivery_time) AS avg_days
 FROM fact_parcel fact

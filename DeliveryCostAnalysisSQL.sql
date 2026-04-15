@@ -130,6 +130,11 @@ INSERT INTO fact_parcel VALUES
 (11, 70.00, 150.00, 3, 3.5, 700.00, 2, 2, 5, 11, 2, 2),
 (12, 80.00, 170.00, 5, 4.5, 900.00, 3, 3, 3, 9, 3, 3);
 
+
+
+
+
+
 -- Queries
 -- ----------------------
 -- Piotr
@@ -142,6 +147,10 @@ JOIN dim_location loc ON fact.destination_id = loc.location_id
 GROUP BY prod.item_category, loc.city
 ORDER BY avg_days DESC;
 
+-- Optimisation
+-- use index so that MySQL can find matching destination rows directly, instead of going through the entire fact table 
+CREATE INDEX index_destination ON fact_parcel(destination_id);
+
 
 -- Finance Query
 -- ---------------------
@@ -152,4 +161,5 @@ SUM(f.total_cost) AS total_cost, SUM(f.total_revenue - f.total_cost) AS profit
 FROM fact_parcel f
 JOIN dim_date d ON f.date_id = d.date_id
 JOIN dim_location l ON f.destination_id = l.location_id
-GROUP BY d.yearN, d.monthN, l.country
+GROUP BY d.yearN, d.monthN, l.country;
+

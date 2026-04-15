@@ -158,10 +158,14 @@ CREATE INDEX index_destination ON fact_parcel(destination_id);
 -- ---------------------
 -- Kripa Shrestha 24141356
 --
-SELECT d.yearN, l.country, SUM(f.total_revenue) AS total_revenue, 
+SELECT d.yearN, d.monthN, l.country, SUM(f.total_revenue) AS total_revenue, 
 SUM(f.total_cost) AS total_cost, SUM(f.total_revenue - f.total_cost) AS profit
 FROM fact_parcel f
 JOIN dim_date d ON f.date_id = d.date_id
 JOIN dim_location l ON f.destination_id = l.location_id
 GROUP BY d.yearN, d.monthN, l.country;
+
+-- Optimisation for Finance Query
+CREATE INDEX index_fact_date ON fact_parcel(date_id);
+
 
